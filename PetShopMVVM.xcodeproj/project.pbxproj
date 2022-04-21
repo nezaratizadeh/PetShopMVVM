@@ -76,7 +76,6 @@
 				2EC48176281180910039876F /* Models */,
 				2EC48175281180870039876F /* Web Service */,
 				2EC481742811807A0039876F /* Common */,
-				2EC48164281180700039876F /* ViewController.swift */,
 				2EC48166281180700039876F /* Main.storyboard */,
 				2EC48169281180740039876F /* Assets.xcassets */,
 				2EC4816B281180740039876F /* LaunchScreen.storyboard */,
@@ -124,6 +123,7 @@
 		2EC48178281180B70039876F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2EC48164281180700039876F /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
