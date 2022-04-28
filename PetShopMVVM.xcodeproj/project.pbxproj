@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E5CE508281AB27200EB01E1 /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5CE507281AB27200EB01E1 /* StatusCell.swift */; };
 		2EC48161281180700039876F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC48160281180700039876F /* AppDelegate.swift */; };
 		2EC48163281180700039876F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC48162281180700039876F /* SceneDelegate.swift */; };
 		2EC48165281180700039876F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC48164281180700039876F /* ViewController.swift */; };
@@ -20,9 +21,11 @@
 		2EC48182281180EE0039876F /* PetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC48181281180EE0039876F /* PetViewModel.swift */; };
 		2EC48187281181070039876F /* PetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC48186281181070039876F /* PetTableViewCell.swift */; };
 		2EC48189281181350039876F /* PetTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC48188281181350039876F /* PetTableViewDataSource.swift */; };
+		2EC4818C28180E710039876F /* StatusTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC4818B28180E710039876F /* StatusTableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E5CE507281AB27200EB01E1 /* StatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
 		2EC4815D281180700039876F /* PetShopMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetShopMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EC48160281180700039876F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EC48162281180700039876F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +41,7 @@
 		2EC48181281180EE0039876F /* PetViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetViewModel.swift; sourceTree = "<group>"; };
 		2EC48186281181070039876F /* PetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetTableViewCell.swift; sourceTree = "<group>"; };
 		2EC48188281181350039876F /* PetTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetTableViewDataSource.swift; sourceTree = "<group>"; };
+		2EC4818B28180E710039876F /* StatusTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,13 +74,13 @@
 		2EC4815F281180700039876F /* PetShopMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				2EC4818A2812A9A30039876F /* StoryBoard */,
 				2EC48185281180F90039876F /* TableViewCells */,
 				2EC48178281180B70039876F /* Controllers */,
 				2EC48177281180980039876F /* ViewModels */,
 				2EC48176281180910039876F /* Models */,
 				2EC48175281180870039876F /* Web Service */,
 				2EC481742811807A0039876F /* Common */,
-				2EC48166281180700039876F /* Main.storyboard */,
 				2EC48169281180740039876F /* Assets.xcassets */,
 				2EC4816B281180740039876F /* LaunchScreen.storyboard */,
 				2EC4816E281180740039876F /* Info.plist */,
@@ -116,6 +120,7 @@
 			children = (
 				2EC48181281180EE0039876F /* PetViewModel.swift */,
 				2EC48188281181350039876F /* PetTableViewDataSource.swift */,
+				2EC4818B28180E710039876F /* StatusTableViewDataSource.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -132,8 +137,17 @@
 			isa = PBXGroup;
 			children = (
 				2EC48186281181070039876F /* PetTableViewCell.swift */,
+				2E5CE507281AB27200EB01E1 /* StatusCell.swift */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		2EC4818A2812A9A30039876F /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				2EC48166281180700039876F /* Main.storyboard */,
+			);
+			path = StoryBoard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +231,8 @@
 				2EC4817A281180C40039876F /* APIService.swift in Sources */,
 				2EC48163281180700039876F /* SceneDelegate.swift in Sources */,
 				2EC48180281180E20039876F /* Category.swift in Sources */,
+				2EC4818C28180E710039876F /* StatusTableViewDataSource.swift in Sources */,
+				2E5CE508281AB27200EB01E1 /* StatusCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

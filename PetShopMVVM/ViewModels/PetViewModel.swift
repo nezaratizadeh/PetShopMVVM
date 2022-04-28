@@ -10,6 +10,7 @@ import Foundation
 class PetViewModel : NSObject {
     
     private var apiService : APIService!
+    private var url : URL = URL(string: "https://petstore.swagger.io/v2/pet/findByStatus?status=pending")!
     private(set) var petData : [Pet]! {
         didSet {
             self.bindEmployeeViewModelToController()
@@ -18,14 +19,16 @@ class PetViewModel : NSObject {
     
     var bindEmployeeViewModelToController : (() -> ()) = {}
     
-    override init() {
+     init(url:URL) {
         super.init()
         self.apiService =  APIService()
-        callFuncToGetEmpData()
+        self.url = url
+        callFuncToGetPetData()
     }
     
-    func callFuncToGetEmpData() {
-        self.apiService.apiToGetEmployeeData { (petData) in
+    func callFuncToGetPetData() {
+        print(url)
+        self.apiService.apiToGetPetData(sourceURL: url) { (petData) in
             self.petData = petData
         }
     }
