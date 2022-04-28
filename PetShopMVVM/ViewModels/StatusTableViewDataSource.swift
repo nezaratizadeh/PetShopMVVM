@@ -1,14 +1,15 @@
 //
-//  EmployeeTableViewDataSource.swift
-//  jadidi
+//  StatusTableViewDataSource.swift
+//  PetShopMVVM
 //
-//  Created by Leila Nezaratizadeh on 20/04/2022.
+//  Created by Leila Nezaratizadeh on 26/04/2022.
 //
 
 import Foundation
 import UIKit
 
-class PetTableViewDataSource<CELL : UITableViewCell,T> : NSObject, UITableViewDataSource {
+
+class StatusTableViewDataSource<CELL : UITableViewCell,T> : NSObject, UITableViewDataSource {
     
     private var cellIdentifier : String!
     private var items : [T]!
@@ -31,4 +32,6 @@ class PetTableViewDataSource<CELL : UITableViewCell,T> : NSObject, UITableViewDa
         self.configureCell(cell, item)
         return cell
     }
+    
+    
 }

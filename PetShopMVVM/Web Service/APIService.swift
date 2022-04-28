@@ -10,9 +10,9 @@ import Foundation
 
 class APIService :  NSObject {
     
-    private let sourceURL = URL(string: "https://petstore.swagger.io/v2/pet/findByStatus?status=sold")!
+//    private let sourceURL = URL(string: "https://petstore.swagger.io/v2/pet/findByStatus?status=sold")!
     
-    func apiToGetEmployeeData(completion:@escaping ([Pet]) -> ()) {
+    func apiToGetPetData(sourceURL:URL,completion:@escaping ([Pet]) -> ()) {
         URLSession.shared.dataTask(with: sourceURL) { (data, response, error) in
             guard error == nil else {
                 print("Error: error calling GET")
