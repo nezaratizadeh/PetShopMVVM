@@ -27,7 +27,6 @@ class PetViewModel : NSObject {
     }
     
     func callFuncToGetPetData() {
-        print(url)
         self.apiService.apiToGetPetData(sourceURL: url) { (petData) in
             self.petData = petData
         }
