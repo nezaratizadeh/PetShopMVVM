@@ -105,7 +105,7 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
         transparentView.alpha = 0
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0,options: .curveEaseInOut, animations: {
             self.transparentView.alpha = 0.5
-            self.statusTableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height + 5, width: frames.width+30, height: CGFloat(self.statusData.count * 50))
+            self.statusTableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height + 5, width: frames.width + 30, height: CGFloat(self.statusData.count * 50))
         }, completion: nil)
     }
     
