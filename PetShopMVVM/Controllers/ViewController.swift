@@ -10,15 +10,15 @@ import UIKit
 import UIKit
 
 class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var statusButton: UIButton!
     
-    private var petViewModel : PetViewModel!
+    private var viewModel: DemoViewModel!
         
     var statusData = [String]()
-
+    
     let transparentView = UIView()
-
+    
     let statusTableView = UITableView()
     
     @IBOutlet weak var petTableView: UITableView!{
@@ -30,11 +30,15 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        petViewModel =  PetViewModel(url:URL(string: "https://petstore.swagger.io/v2/pet/findByStatus?status=pending")!)
+        viewModel = DemoViewModel { [unowned self] (state) in
+                DispatchQueue.main.async {
+                    self.petTableView.reloadData()
+                }
+        }
+        
         statusTableView.delegate = self
         statusTableView.dataSource = self
         statusTableView.register(StatusCell.self, forCellReuseIdentifier: "StatusCell")
-//      callToViewModelForUIUpdate()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -43,30 +47,30 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.petTableView {
-            if let per = petViewModel.petData{
+            if let per = viewModel?.state.petData{
                 return per.count
             } else {
-            return 0
+                return 0
             }
         } else {
             return statusData.count
         }
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == self.petTableView {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PetTableViewCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PetTableViewCell", for: indexPath)
             
-        
-            if  let name = petViewModel.petData[indexPath.row].name{
-            cell.imageView?.image = UIImage(systemName: "\(name.first!.lowercased()).square")
-            cell.textLabel?.text = name
-        }
-        else {
-            cell.imageView?.image = UIImage(systemName: "n.square")
-            cell.textLabel?.text = "No name"
-        }
-        return cell
+            
+            if  let name = viewModel?.state.petData[indexPath.row].name{
+                cell.imageView?.image = UIImage(systemName: "\(name.first!.lowercased()).square")
+                cell.textLabel?.text = name
+            }
+            else {
+                cell.imageView?.image = UIImage(systemName: "n.square")
+                cell.textLabel?.text = "No name"
+            }
+            return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "StatusCell", for: indexPath)
@@ -74,14 +78,67 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
             return cell
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == statusTableView {
             statusButton.setTitle(statusData[indexPath.row], for: .normal)
             removeTransparentView()
-            petViewModel = PetViewModel(url:URL(string: "https://petstore.swagger.io/v2/pet/findByStatus?status=\(statusData[indexPath.row])")!)
-            callToViewModelForUIUpdate()
+            
+            viewModel?.loadData(sourceURL:URL(string: "https://petstore.swagger.io/v2/pet/findByStatus?status=\(statusData[indexPath.row])")!)
+            
         }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if tableView == statusTableView {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        
+        let editButton = UIContextualAction(style: .normal, title: "Edit") {  (contextualAction, view, boolValue) in
+            
+            
+            let alert = UIAlertController(title: "Edit", message: "", preferredStyle: .alert)
+            
+            let saveAction = UIAlertAction(title: "Save", style: .default, handler: { [self] (action) in
+                if alert.textFields?.first?.text != "" {
+                    self.viewModel?.state.petData[indexPath.row].name = (alert.textFields?.first!.text)!
+                    
+                }
+                
+                
+                self.viewModel?.editData(pet:viewModel?.state.petData[indexPath.row], sourceURL:URL(string: "https://petstore.swagger.io/v2/pet/")!)
+                self.petTableView.reloadData()
+                
+            })
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+            alert.addTextField()
+            alert.addAction(saveAction)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true)
+        }
+        let deleteButton = UIContextualAction(style: .destructive, title: "Delete") {  (contextualAction, view, boolValue) in
+        
+            
+            self.viewModel?.deletePet(pet:self.viewModel?.state.petData[indexPath.row], sourceURL:URL(string: "https://petstore.swagger.io/v2/pet/")!)
+            self.viewModel?.state.petData.remove(at: indexPath.row)
+            
+            self.petTableView.reloadData()
+        }
+        deleteButton.backgroundColor = UIColor.red
+        editButton.backgroundColor = UIColor.gray
+        return UISwipeActionsConfiguration(actions:[editButton,deleteButton])
+    }
+    
+    private func editInJSONURL(pet:Pet,url:URL) {
+        
     }
     
     @IBAction func ChangeStatus(_ sender: Any) {
@@ -111,25 +168,11 @@ class ViewController: UIViewController , UITableViewDelegate, UITableViewDataSou
     
     @objc func removeTransparentView() {
         let frames = statusButton.frame
-
+        
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0,options: .curveEaseInOut, animations: {
             self.transparentView.alpha = 0
             self.statusTableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
         }, completion: nil)    }
-    
-    
-    func callToViewModelForUIUpdate(){
-        petViewModel.bindEmployeeViewModelToController = {
-            self.updateDataSource()
-        }
-    }
-    
-    func updateDataSource(){
-        DispatchQueue.main.async {
-            self.petTableView.reloadData()
-        }
-    }
-    
     
     
 }
