@@ -9,9 +9,10 @@ import Foundation
 
 
 
-struct Pet: Decodable , Equatable {
+struct Pet: Codable , Equatable {
     
-    var id: UInt64
+   
+    var id: UInt64 
     var name: String?
     var status: String?
     var tags: [Tag]
@@ -21,6 +22,8 @@ struct Pet: Decodable , Equatable {
     static func == (lhs: Pet, rhs: Pet) -> Bool {
         return lhs.name == rhs.name
     }
+    
+    
 }
 
 

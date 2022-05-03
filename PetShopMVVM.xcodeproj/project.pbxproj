@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2E5CE508281AB27200EB01E1 /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5CE507281AB27200EB01E1 /* StatusCell.swift */; };
+		2E5CE50E282050D800EB01E1 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5CE50D282050D800EB01E1 /* State.swift */; };
+		2E5CE5102820526000EB01E1 /* DemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5CE50F2820526000EB01E1 /* DemoViewModel.swift */; };
 		2EC48161281180700039876F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC48160281180700039876F /* AppDelegate.swift */; };
 		2EC48163281180700039876F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC48162281180700039876F /* SceneDelegate.swift */; };
 		2EC48165281180700039876F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC48164281180700039876F /* ViewController.swift */; };
@@ -26,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		2E5CE507281AB27200EB01E1 /* StatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
+		2E5CE50D282050D800EB01E1 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		2E5CE50F2820526000EB01E1 /* DemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewModel.swift; sourceTree = "<group>"; };
 		2EC4815D281180700039876F /* PetShopMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetShopMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EC48160281180700039876F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EC48162281180700039876F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 				2EC48181281180EE0039876F /* PetViewModel.swift */,
 				2EC48188281181350039876F /* PetTableViewDataSource.swift */,
 				2EC4818B28180E710039876F /* StatusTableViewDataSource.swift */,
+				2E5CE50D282050D800EB01E1 /* State.swift */,
+				2E5CE50F2820526000EB01E1 /* DemoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -230,9 +236,11 @@
 				2EC48189281181350039876F /* PetTableViewDataSource.swift in Sources */,
 				2EC4817A281180C40039876F /* APIService.swift in Sources */,
 				2EC48163281180700039876F /* SceneDelegate.swift in Sources */,
+				2E5CE50E282050D800EB01E1 /* State.swift in Sources */,
 				2EC48180281180E20039876F /* Category.swift in Sources */,
 				2EC4818C28180E710039876F /* StatusTableViewDataSource.swift in Sources */,
 				2E5CE508281AB27200EB01E1 /* StatusCell.swift in Sources */,
+				2E5CE5102820526000EB01E1 /* DemoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
