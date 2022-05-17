@@ -9,7 +9,7 @@ import Foundation
 
 struct Tag: Codable {
     var id: Int64
-    var name: String
+    var name: String?
 }
 
 
