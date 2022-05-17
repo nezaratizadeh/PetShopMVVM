@@ -9,6 +9,6 @@ import Foundation
 
 struct Category: Codable {
     var id: Int64
-    var name: String
+    var name: String?
 }
 
