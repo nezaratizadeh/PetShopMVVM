@@ -15,9 +15,9 @@ struct Pet: Codable , Equatable {
     var id: UInt64 
     var name: String?
     var status: String?
-    var tags: [Tag]
+    var tags: [Tag]?
     var category: Category?
-    var photoUrls: [String]
+    var photoUrls: [String]?
     
     static func == (lhs: Pet, rhs: Pet) -> Bool {
         return lhs.name == rhs.name
